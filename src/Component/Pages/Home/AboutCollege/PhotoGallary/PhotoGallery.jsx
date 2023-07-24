@@ -13,52 +13,52 @@ import photos10 from "../../../../../../public/images/graduate-img/10.jpg";
 
 const photos = [
   {
-    src: "../../../../../../public/images/graduate-img/01.jpg",
+    src: photos1,
     width: 380,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/02.jpg",
+    src: photos2,
     width: 400,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/03.jpg",
+    src: photos3,
     width: 400,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/04.jpg",
+    src: photos4,
     width: 380,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/05.jpg",
+    src: photos5,
     width: 400,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/06.jpg",
+    src: photos6,
     width: 400,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/07.jpg",
+    src: photos7,
     width: 400,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/08.jpg",
+    src: photos8,
     width: 400,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/09.jpg",
+    src: photos9,
     width: 400,
     height: 400,
   },
   {
-    src: "../../../../../../public/images/graduate-img/10.jpg",
+    src: photos10,
     width: 400,
     height: 400,
   },
