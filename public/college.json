@@ -1,0 +1,310 @@
+[
+    {
+        "id":1,
+        "college_image": "https://i.ibb.co/0QVLBHL/ABC-University.jpg",
+        "college_name": "ABC University",
+        "admission_dates": {
+          "Fall": "Sep 1 - 30, 2023",
+          "Spring": "Feb 1 - 28, 2024"
+        },
+        "events": ["Orientation Day", "Annual Sports Meet", "Science Exhibition"],
+        "research_history": "Founded in 1965, ABC University has a long-standing tradition of research excellence.",
+        "sports": ["Football", "Basketball", "Tennis", "Swimming", "Cricket"],
+        "admission_process": "Prospective students must apply online through the university's admission portal.",
+        "events_details": {
+          "Orientation Day": "Orientation Day welcomes new students and provides essential information about college life.",
+          "Annual Sports Meet": "A grand sports event where students from different departments compete in various sports.",
+          "Science Exhibition": "An exhibition showcasing innovative research projects and scientific advancements."
+        },
+        "research_works": {
+          "2018": 25,
+          "2019": 31,
+          "2020": 42,
+          "2021": 37
+        },
+        "sports_categories": {
+          "Indoor": ["Basketball", "Tennis"],
+          "Outdoor": ["Football", "Swimming", "Cricket"]
+        },
+        "college_rating": 4.6,
+        "number_of_research": 135
+      },
+
+      {
+        "id":2,
+        "college_image": "https://i.ibb.co/4pTCBg6/XYZ-College.jpg",
+        "college_name": "XYZ College of Arts",
+        "admission_dates": {
+          "Fall": "Oct 15 - 30, 2023",
+          "Spring": "Mar 15 - 30, 2024"
+        },
+        "events": ["Art Fest", "Literary Symposium", "Cultural Week"],
+        "research_history": "Established in 1972, XYZ College of Arts is renowned for its contributions to the arts and culture.",
+        "sports": ["Badminton", "Table Tennis", "Chess"],
+        "admission_process": "Prospective students need to submit their portfolios and attend an interview for the selection process.",
+        "events_details": {
+          "Art Fest": "An annual celebration of creativity, showcasing artworks from students and renowned artists.",
+          "Literary Symposium": "A gathering of writers and intellectuals discussing literature and its impact on society.",
+          "Cultural Week": "A week-long extravaganza with performances, dances, and culinary delights from diverse cultures."
+        },
+        "research_works": {
+          "2018": 18,
+          "2019": 22,
+          "2020": 27,
+          "2021": 30
+        },
+        "sports_categories": {
+          "Indoor": ["Badminton", "Table Tennis", "Chess"],
+          "Outdoor": []
+        },
+        "college_rating": 4.3,
+        "number_of_research": 97
+      },
+      {
+        "id":3,
+        "college_image": "https://i.ibb.co/6YpcY3D/PQR-Institute.jpg",
+        "college_name": "PQR Institute of Technology",
+        "admission_dates": {
+          "Fall": "Aug 10 - 30, 2023",
+          "Spring": "Jan 10 - 30, 2024"
+        },
+        "events": ["Tech Expo", "Coding Competition", "Innovation Summit"],
+        "research_history": "PQR Institute of Technology is a leading institution for technology research, established in 1980.",
+        "sports": ["Cricket", "Football", "Hockey", "Volleyball"],
+        "admission_process": "Students can apply online and need to appear for an entrance exam to secure admission.",
+        "events_details": {
+          "Tech Expo": "A showcase of innovative tech projects and ideas developed by students and faculty.",
+          "Coding Competition": "An intense coding contest that challenges participants' programming skills.",
+          "Innovation Summit": "A gathering of industry experts and academics discussing technological advancements."
+        },
+        "research_works": {
+          "2018": 32,
+          "2019": 39,
+          "2020": 41,
+          "2021": 44
+        },
+        "sports_categories": {
+          "Indoor": [],
+          "Outdoor": ["Cricket", "Football", "Hockey", "Volleyball"]
+        },
+        "college_rating": 4.8,
+        "number_of_research": 156
+      },
+      {
+        "id":4,
+        "college_image": "https://i.ibb.co/BTm855h/LMN-Medical.jpg",
+        "college_name": "LMN Medical College",
+        "admission_dates": {
+          "Fall": "Jul 1 - 31, 2023",
+          "Spring": "Jan 1 - 31, 2024"
+        },
+        "events": ["Healthcare Conference", "Medical Research Symposium", "Community Health Camp"],
+        "research_history": "LMN Medical College is a pioneer in medical research and was established in 1950.",
+        "sports": ["Athletics", "Swimming", "Yoga"],
+        "admission_process": "Admission is based on NEET scores and subsequent counseling conducted by the college.",
+        "events_details": {
+          "Healthcare Conference": "A conference focusing on advancements in healthcare and medical practices.",
+          "Medical Research Symposium": "An event where medical researchers present their findings and discoveries.",
+          "Community Health Camp": "A camp organized to provide free medical services and health checkups to the community."
+        },
+        "research_works": {
+          "2018": 19,
+          "2019": 25,
+          "2020": 28,
+          "2021": 35
+        },
+        "sports_categories": {
+          "Indoor": ["Yoga"],
+          "Outdoor": ["Athletics", "Swimming"]
+        },
+        "college_rating": 4.4,
+        "number_of_research": 107
+      },
+
+      {
+        "id":5,
+        "college_image": "https://i.ibb.co/MpTtKt4/EFG-Business.jpg",
+        "college_name": "EFG Business School",
+        "admission_dates": {
+          "Fall": "Aug 20 - 30, 2023",
+          "Spring": "Feb 15 - 31, 2024"
+        },
+        "events": ["Business Summit", "Entrepreneurship Workshop", "Leadership Seminar"],
+        "research_history": "EFG Business School is renowned for its contributions to business and management research.",
+        "sports": ["Golf", "Tennis", "Squash"],
+        "admission_process": "Applicants must submit their academic records and attend a personal interview with the admission committee.",
+        "events_details": {
+          "Business Summit": "A gathering of industry leaders and experts discussing current business trends and challenges.",
+          "Entrepreneurship Workshop": "A workshop aimed at nurturing entrepreneurial skills and business ideas among students.",
+          "Leadership Seminar": "A seminar exploring the principles of effective leadership in the corporate world."
+        },
+        "research_works": {
+          "2018": 12,
+          "2019": 17,
+          "2020": 21,
+          "2021": 19
+        },
+        "sports_categories": {
+          "Indoor": ["Tennis", "Squash"],
+          "Outdoor": ["Golf"]
+        },
+        "college_rating": 4.2,
+        "number_of_research": 69
+      },
+
+      {
+        "id":6,
+        "college_image": "https://i.ibb.co/6RDbTr3/UVW-School.jpg",
+        "college_name": "UVW School of Arts and Design",
+        "admission_dates": {
+          "Fall": "Oct 1 - 15, 2023",
+          "Spring": "Mar 1 - 15, 2024"
+        },
+        "events": ["Art Showcase", "Fashion Show", "Design Symposium"],
+        "research_history": "UVW School of Arts and Design is a hub of creativity, fostering innovative design research since 1990.",
+        "sports": ["Paintball", "Skateboarding", "Parkour"],
+        "admission_process": "Prospective students need to submit their portfolios and attend a creative aptitude test and interview.",
+        "events_details": {
+          "Art Showcase": "An exhibition of artworks from students, faculty, and renowned artists, open to the public.",
+          "Fashion Show": "A glamorous event showcasing the creative fashion designs of students.",
+          "Design Symposium": "A symposium exploring the latest trends and innovations in the field of design."
+        },
+        "research_works": {
+          "2018": 27,
+          "2019": 34,
+          "2020": 29,
+          "2021": 36
+        },
+        "sports_categories": {
+          "Indoor": [],
+          "Outdoor": ["Paintball", "Skateboarding", "Parkour"]
+        },
+        "college_rating": 4.5,
+        "number_of_research": 126
+      },
+
+      {
+        "id":7,
+        "college_image": "https://i.ibb.co/Cb0Hgzr/QRS-Law.jpg",
+        "college_name": "QRS Law College",
+        "admission_dates": {
+          "Fall": "Jul 15 - 31, 2023",
+          "Spring": "Jan 15 - 28, 2024"
+        },
+        "events": ["Moot Court Competition", "Legal Symposium", "Human Rights Conference"],
+        "research_history": "QRS Law College has a legacy of producing exceptional legal research since 1985.",
+        "sports": ["Moot Court", "Debate", "Chess"],
+        "admission_process": "Admission is based on the Common Law Admission Test (CLAT) scores and a personal interview.",
+        "events_details": {
+          "Moot Court Competition": "A simulated court session where law students argue cases before a panel of judges.",
+          "Legal Symposium": "A gathering of legal experts discussing various aspects of the law and legal profession.",
+          "Human Rights Conference": "A conference shedding light on human rights issues and legal interventions."
+        },
+        "research_works": {
+          "2018": 21,
+          "2019": 28,
+          "2020": 32,
+          "2021": 29
+        },
+        "sports_categories": {
+          "Indoor": ["Moot Court", "Debate", "Chess"],
+          "Outdoor": []
+        },
+        "college_rating": 4.7,
+        "number_of_research": 110
+      },
+
+      {
+        "id":8,
+        "college_image": "https://i.ibb.co/YBFfxYB/STU-Music.jpg",
+        "college_name": "STU Music Conservatory",
+        "admission_dates": {
+          "Fall": "Sep 15 - 31, 2023",
+          "Spring": "Feb 15 - 31, 2024"
+        },
+        "events": ["Music Recital", "Masterclasses", "Composers' Forum"],
+        "research_history": "STU Music Conservatory is a center for musical excellence, nurturing artistic research since 1975.",
+        "sports": ["None"],
+        "admission_process": "Applicants must audition to demonstrate their musical abilities and passion for music.",
+        "events_details": {
+          "Music Recital": "A performance showcasing the musical talents of students, faculty, and guest artists.",
+          "Masterclasses": "Interactive sessions with renowned musicians where students can learn from their expertise.",
+          "Composers' Forum": "A forum where aspiring composers present their original compositions and receive feedback."
+        },
+        "research_works": {
+          "2018": 14,
+          "2019": 18,
+          "2020": 20,
+          "2021": 16
+        },
+        "sports_categories": {
+          "Indoor": [],
+          "Outdoor": []
+        },
+        "college_rating": 4.1,
+        "number_of_research": 68
+      },
+
+      {
+        "id":9,
+        "college_image": "https://i.ibb.co/WttpQzM/IJK-Institute.jpg",
+        "college_name": "IJK Institute of Medicine",
+        "admission_dates": {
+          "Fall": "Jul 5 - 15, 2023",
+          "Spring": "Jan 5 - Feb 15, 2024"
+        },
+        "events": ["Medical Camps", "Health Awareness Workshops", "Research Symposium"],
+        "research_history": "IJK Institute of Medicine has been at the forefront of medical research and education since 1995.",
+        "sports": ["Yoga", "Meditation", "Walking"],
+        "admission_process": "Admission is based on the National Eligibility cum Entrance Test (NEET) scores and counseling.",
+        "events_details": {
+          "Medical Camps": "Camps organized to provide medical services and health checkups to underserved communities.",
+          "Health Awareness Workshops": "Workshops promoting healthy lifestyles and disease prevention.",
+          "Research Symposium": "A symposium where medical researchers present their latest findings and innovations."
+        },
+        "research_works": {
+          "2018": 24,
+          "2019": 29,
+          "2020": 33,
+          "2021": 30
+        },
+        "sports_categories": {
+          "Indoor": ["Yoga", "Meditation"],
+          "Outdoor": ["Walking"]
+        },
+        "college_rating": 4.9,
+        "number_of_research": 116
+      },
+
+      {
+        "id":10,
+        "college_image": "https://i.ibb.co/xL0YNPB/MNO-Engineering.jpg",
+        "college_name": "MNO Engineering College",
+        "admission_dates": {
+          "Fall": "Aug 5 - 20, 2023",
+          "Spring": "Feb 5 - 25, 2024"
+        },
+        "events": ["Technical Fest", "Robotics Competition", "Innovation Expo"],
+        "research_history": "MNO Engineering College is a hub of technical innovation, empowering research since 2000.",
+        "sports": ["Basketball", "Football", "Athletics", "Table Tennis"],
+        "admission_process": "Prospective students must appear for an entrance exam and participate in counseling for admission.",
+        "events_details": {
+          "Technical Fest": "A fest celebrating technology and innovation, featuring various technical competitions.",
+          "Robotics Competition": "A thrilling robotics competition where students showcase their robotic creations.",
+          "Innovation Expo": "An exhibition of innovative projects and ideas from engineering students."
+        },
+        "research_works": {
+          "2018": 28,
+          "2019": 37,
+          "2020": 45,
+          "2021": 40
+        },
+        "sports_categories": {
+          "Indoor": ["Table Tennis"],
+          "Outdoor": ["Basketball", "Football", "Athletics"]
+        },
+        "college_rating": 4.6,
+        "number_of_research": 150
+      }
+
+]
