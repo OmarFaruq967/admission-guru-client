@@ -1,11 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Container from "../../Shared/Container/Container";
 import photo1 from "../../../../public/images/graduate-img/01.jpg";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
+import useColleges from "../../Hook/useColleges";
 
 const AdmissionForm = () => {
   const { user } = useContext(AuthContext);
+  const formRef = useRef(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [college, loading] = useColleges();
+  console.log(college);
+  const collegeId = new URLSearchParams(window.location.search).get(
+    "collegeId"
+  );
   const handleAdmission = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -24,9 +32,11 @@ const AdmissionForm = () => {
       address,
       birthDay,
       image,
+      collegeId,
     };
+
     console.log(admission);
-    fetch("https://admission-guru-server-eta.vercel.app/admissions", {
+    fetch("http://localhost:5000/admissions", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -38,6 +48,8 @@ const AdmissionForm = () => {
         console.log(data);
         if (data.insertedId) {
           toast.success("Admission successful");
+          formRef.current.reset();
+          setFormSubmitted(true);
         }
       });
   };
@@ -45,12 +57,14 @@ const AdmissionForm = () => {
   return (
     <div className="my-32">
       <Container>
+        <div>
+        </div>
         <div className="grid md:grid-cols-2 gap-10">
           <div className="h-[90vh]">
             <img className="h-[90vh] rounded-md" src={photo1} alt="" />
           </div>
           <div className=" border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5">
-            <form onSubmit={handleAdmission}>
+            <form ref={formRef} onSubmit={handleAdmission}>
               <div className="md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
@@ -63,8 +77,8 @@ const AdmissionForm = () => {
                     required
                   />
                   <label
-                    for="name"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="name"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Name
                   </label>
@@ -82,8 +96,8 @@ const AdmissionForm = () => {
                     required
                   />
                   <label
-                    for="email"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="email"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Email
                   </label>
@@ -98,8 +112,8 @@ const AdmissionForm = () => {
                     required
                   />
                   <label
-                    for="subject"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="subject"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Subject
                   </label>
@@ -114,8 +128,8 @@ const AdmissionForm = () => {
                     required
                   />
                   <label
-                    for="phoneNumber"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="phoneNumber"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Phone Number
                   </label>
@@ -130,8 +144,8 @@ const AdmissionForm = () => {
                     required
                   />
                   <label
-                    for="address"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="address"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Address
                   </label>
@@ -146,8 +160,8 @@ const AdmissionForm = () => {
                     required
                   />
                   <label
-                    for="birthDay"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="birthDay"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Birth Day
                   </label>
@@ -162,8 +176,8 @@ const AdmissionForm = () => {
                     required
                   />
                   <label
-                    for="image"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="image"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     Picture URL
                   </label>

@@ -5,7 +5,7 @@
 //     const [ loading, setLoading] = useState (true);
 
 //     useEffect(()=>{
-//         const url = "https://admission-guru-server-eta.vercel.app/admission";
+//         const url = "http://localhost:5000/admission";
 //         fetch(url)
 //         .then((res)=> res.json())
 //         .then((data)=>{

@@ -1,36 +1,33 @@
 import Container from "../../Shared/Container/Container";
 import CollegeCard from "./CollegeCard";
 import useColleges from "../../Hook/useColleges";
-import CollegeHero from "./CollegeHero";
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
 import LoadingSpinners from "../../Shared/LoadingSpinners/LoadingSpinners";
-
+import image1 from "../../../../public/Images/Images/image-1.webp";
+import HeroImage from "../../Shared/HeroImage/HeroImage";
 
 const Colleges = () => {
-  const [college] = useColleges();
-  const { loading, setLoading } = useContext(AuthContext);
-
+  const [college, loading] = useColleges();
+ 
   return (
     <div>
-      <CollegeHero />
+      <HeroImage img={image1} title='Our Colleges' subtitle='See Our Colleges'/>
       <Container>
-        <div className="my-24 ">
-          <div className="grid md:grid-cols-2 w-[100%] gap-10">
-            {loading ? (
-              <div className="flex mx-auto items-center mr-52 justify-center h-[50vh]">
-                <LoadingSpinners/>
-              </div>
-            ) : (
-              college.map((collegeData) => (
+        {loading ? (
+          <div className="flex items-center justify-center h-screen">
+            <LoadingSpinners />
+          </div>
+        ) : (
+          <div className="my-24">
+            <div className="grid md:grid-cols-2 w-[100%] gap-10">
+              {college.map((collegeData) => (
                 <CollegeCard
-                  key={collegeData.id}
+                  key={collegeData._id}
                   collegeData={collegeData}
                 ></CollegeCard>
-              ))
-            )}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </Container>
     </div>
   );

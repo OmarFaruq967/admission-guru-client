@@ -4,7 +4,7 @@ export const saveUser = (user) => {
     email: user.email,
   };
 
-  fetch(`https://admission-guru-server-eta.vercel.app/users/${user?.email}`, {
+  fetch(`http://localhost:5000/users/${user?.email}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",

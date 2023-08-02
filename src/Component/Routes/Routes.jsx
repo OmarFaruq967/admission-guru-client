@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
 
     children: [
       {
@@ -35,7 +35,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "admission-form",
-        element: <PrivateRoute><AdmissionForm /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AdmissionForm />
+          </PrivateRoute>
+        ),
+        // loader: ({params})=> fetch(`http://localhost:5000/college/${params._Id}/admissions-form`)
       },
       {
         path: "sign-up",
@@ -43,11 +48,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/college/:id",
-        element: <PrivateRoute><CollegeDetails/></PrivateRoute>,
-        loader: ({ params }) =>
-          fetch(
-            `https://admission-guru-server-eta.vercel.app/college/${params._id}`
-          ),
+        element: (
+          <PrivateRoute>
+            <CollegeDetails />
+          </PrivateRoute>
+        ),
+        loader:({params}) =>
+          fetch(`http://localhost:5000/college/${params.id}`),
       },
     ],
   },

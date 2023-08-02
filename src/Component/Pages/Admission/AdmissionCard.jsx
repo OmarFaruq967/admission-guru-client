@@ -10,11 +10,12 @@ const AdmissionCard = ({result}) => {
       college_name,
       college_image,
       college_rating,
+      _id,
     } = result;
   
     return (
       <div>
-        <div className=" h-[370px] bg-[#e2e8f0] border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5 ">
+        <div className=" md:h-[350px] bg-[#e2e8f0] border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5 ">
           <div>
             <img
               className="h-[100px] md:h-[150px] w-[100%]"
@@ -22,7 +23,7 @@ const AdmissionCard = ({result}) => {
               alt=""
             />
           </div>
-          <h2 className="text-sm font-medium text-black mt-5">College Name: {college_name}</h2>
+          <h2 className="text-sm font-medium text-black mt-5">{college_name}</h2>
           <div className="flex mt-2">
             <div>
               <p className="text-sm  text-black  font-medium pr-5 pt-[6px]">Rating:</p>
@@ -86,7 +87,9 @@ const AdmissionCard = ({result}) => {
           
           
           <div className="mt-5">
-            <Link to='/admission-form'>
+            {/* <Link to={`/college/${result._id}`}> */}
+            {/* <Link to='/admission-form'> */}
+            <Link to={`/admission-form?collegeId=${_id}`}>
             <button
               type="submit"
               className="bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-2 font-medium text-base text-white "

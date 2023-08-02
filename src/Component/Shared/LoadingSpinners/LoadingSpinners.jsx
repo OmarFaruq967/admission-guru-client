@@ -12,7 +12,7 @@ const LoadingSpinners = () => {
       items-center 
     '
     >
-      <ScaleLoader size={100} color='red' />
+      <ScaleLoader size={100} color='#041838' />
     </div>
   )
 };

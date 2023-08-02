@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../Shared/Container/Container";
+import Heading from "../../Shared/Heading/Heading";
+import image1 from "../../../../public/Images/Images/image-1.webp";
 
 const CollegeDetails = () => {
   const { id } = useParams();
@@ -8,7 +10,7 @@ const CollegeDetails = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://admission-guru-server-eta.vercel.app/college/${id}`)
+    fetch(`http://localhost:5000/college/${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched data:", data);
@@ -33,7 +35,20 @@ const CollegeDetails = () => {
   } = data;
 
   return (
-    <div className="my-24">
+    <div className="mb-24">
+      {/* college details hero section */}
+      <div
+        className="w-full h-96 bg-fixed bg-cover bg-no-repeat bg-center relative mb-10"
+        style={{ backgroundImage: `url(${image1})` }}
+      >
+        <div className="absolute inset-0 bg-black opacity-70"></div>
+
+        <div className=" h-96  flex mx-0 items-center justify-center">
+          <div className="z-10 text-white text-center ">
+           <Heading title={college_name} subtitle='See details of'></Heading>
+          </div>
+        </div>
+      </div>
       <Container>
         <div className=" grid md:grid-cols-2 gap-5">
           <div>
