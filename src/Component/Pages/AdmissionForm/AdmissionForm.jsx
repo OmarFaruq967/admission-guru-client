@@ -11,9 +11,71 @@ const AdmissionForm = ({ collegeId }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [college, loading] = useColleges();
   console.log(college);
-  const collegeIdParam = new URLSearchParams(window.location.search).get("collegeId");
-  const selectedCollegeId = collegeIdParam ? collegeIdParam : null;
-  
+  const collegeIdParam = new URLSearchParams(window.location.search).get(
+    "collegeId"
+  );
+
+  // const handleAdmission = (event) => {
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   const name = form.name.value;
+  //   const subject = form.subject.value;
+  //   const phoneNumber = form.phoneNumber.value;
+  //   const address = form.address.value;
+  //   const birthDay = form.birthDay.value;
+  //   const image = form.image.value;
+  //   const email = user?.email;
+  //   const admission = {
+  //     name: name,
+  //     email,
+  //     subject,
+  //     phoneNumber,
+  //     address,
+  //     birthDay,
+  //     image,
+  //     collegeId: collegeId,
+  //   };
+  //   console.log(admission);
+
+  //   fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(admission),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.insertedId) {
+  //         toast.success("Admission successful");
+  //         formRef.current.reset();
+  //         setFormSubmitted(true);
+  //       }
+  //     });
+
+  //   // Image Upload
+  //   const imageUpload = event.target.image.files[0];
+  //   const formData = new FormData();
+  //   formData.append("image", imageUpload);
+
+  //   const url = `https://api.imgbb.com/1/upload?key=${
+  //     import.meta.env.VITE_IMGBB_KEY
+  //   }`;
+  //   fetch(url, {
+  //     method: "POST",
+  //     body: formData,
+  //   })
+  //     .then((res) => res.json())
+  //     .then((imageData) => {
+  //       try {
+  //         const imageUrl = imageData.data.display_url;
+  //       } catch (err) {
+  //         console.log(err.message);
+  //         toast.error(err.message);
+  //       }
+  //     });
+  // };
   const handleAdmission = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -22,44 +84,65 @@ const AdmissionForm = ({ collegeId }) => {
     const phoneNumber = form.phoneNumber.value;
     const address = form.address.value;
     const birthDay = form.birthDay.value;
-    const image = form.image.value;
     const email = user?.email;
-    const admission = {
-      name: name,
-      email,
-      subject,
-      phoneNumber,
-      address,
-      birthDay,
-      image,
-      collegeId: collegeId,
-    };
 
-    console.log(admission);
-    // fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
-    fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
+    // Image Upload
+    const imageUpload = event.target.image.files[0];
+    const formData = new FormData();
+    formData.append("image", imageUpload);
+  
+    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`;
+    fetch(url, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(admission),
+      body: formData,
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          toast.success("Admission successful");
-          formRef.current.reset();
-          setFormSubmitted(true);
-        }
+      .then((imageData) => {
+        const imageUrl = imageData.data.display_url;
+  
+        const admission = {
+          name: name,
+          email,
+          subject,
+          phoneNumber,
+          address,
+          birthDay,
+          image: imageUrl, // Use the imageUrl received from ImgBB API
+          collegeId: collegeId,
+        };
+  
+        fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(admission),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              toast.success("Admission successful");
+              formRef.current.reset();
+              setFormSubmitted(true);
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            toast.error("Error submitting admission");
+          });
+      })
+      .catch((err) => {
+        console.log(err.message);
+        toast.error(err.message);
       });
   };
+  
 
   return (
     <div className="my-10">
       <Container>
-        <div>
-        </div>
+        <div></div>
         <div className="grid md:grid-cols-2 gap-10">
           <div className="h-[90vh]">
             <img className="h-[90vh] rounded-md" src={photo1} alt="" />
@@ -167,7 +250,21 @@ const AdmissionForm = ({ collegeId }) => {
                     Birth Day
                   </label>
                 </div>
-                <div className="relative z-0 w-full mb-6 group">
+                <div>
+                  <label htmlFor="image" className="block text-sm text-gray-500 dark:text-gray-300">
+                    Select Image:
+                  </label>
+                  <input
+                  className="
+                  block w-full  py-2 mt-2 text-sm text-gray-600 bg-white  rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300
+                    required"
+                    type="file"
+                    id="image"
+                    name="image"
+                    accept="image/*"
+                  />
+                </div>
+                {/* <div className="relative z-0 w-full mb-6 group">
                   <input
                     type="url"
                     name="image"
@@ -182,11 +279,11 @@ const AdmissionForm = ({ collegeId }) => {
                   >
                     Picture URL
                   </label>
-                </div>
+                </div> */}
               </div>
               <button
                 type="submit"
-                className="text-white bg-[#041838] hover:bg-[#FBBD23] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-[#041838] dark:focus:ring-[#FBBD23]"
+                className="text-white  bg-[#041838] hover:bg-[#FBBD23] mt-5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-[#041838] dark:focus:ring-[#FBBD23]"
               >
                 Submit
               </button>
