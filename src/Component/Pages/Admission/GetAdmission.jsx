@@ -92,7 +92,7 @@ const GetAdmission = () => {
           subtitle="Fill up this form for get your admission"
         />
       </div>
-      <AdmissionForm ></AdmissionForm>
+      <AdmissionForm collegeId={data._id} ></AdmissionForm>
     </div>
   );
 };

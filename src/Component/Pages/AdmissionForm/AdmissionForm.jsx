@@ -5,14 +5,14 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 import useColleges from "../../Hook/useColleges";
 
-const AdmissionForm = () => {
+const AdmissionForm = ({ collegeId }) => {
   const { user } = useContext(AuthContext);
   const formRef = useRef(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [college, loading] = useColleges();
   console.log(college);
   const collegeIdParam = new URLSearchParams(window.location.search).get("collegeId");
-  const collegeId = collegeIdParam ? collegeIdParam : null;
+  const selectedCollegeId = collegeIdParam ? collegeIdParam : null;
   
   const handleAdmission = (event) => {
     event.preventDefault();
@@ -32,10 +32,11 @@ const AdmissionForm = () => {
       address,
       birthDay,
       image,
-      collegeId,
+      collegeId: collegeId,
     };
 
     console.log(admission);
+    // fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
     fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
       method: "POST",
       headers: {
