@@ -11,9 +11,9 @@ const AdmissionForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [college, loading] = useColleges();
   console.log(college);
-  const collegeId = new URLSearchParams(window.location.search).get(
-    "collegeId"
-  );
+  const collegeIdParam = new URLSearchParams(window.location.search).get("collegeId");
+  const collegeId = collegeIdParam ? collegeIdParam : null;
+  
   const handleAdmission = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -36,7 +36,7 @@ const AdmissionForm = () => {
     };
 
     console.log(admission);
-    fetch("http://localhost:5000/admissions", {
+    fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,7 +55,7 @@ const AdmissionForm = () => {
   };
 
   return (
-    <div className="my-32">
+    <div className="my-10">
       <Container>
         <div>
         </div>

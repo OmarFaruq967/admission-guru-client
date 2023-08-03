@@ -22,7 +22,7 @@ const SearchCard = ({result}) => {
             alt=""
           />
         </div>
-        <h2 className="text-sm font-medium text-black mt-5">College Name: {college_name}</h2>
+        <h2 className="text-sm font-medium text-black mt-5">{college_name}</h2>
         <div className="flex mt-2">
           <div>
             <p className="text-sm  text-black  font-medium pr-5 pt-[6px]">Rating:</p>

@@ -21,8 +21,8 @@ const Admission = () => {
         ) : (
             <ul className="my-24 grid md:grid-cols-3 gap-5">
               {college.map((result) => (
-                <li className="text-lg font-semibold">
-                  <AdmissionCard key={result._id} result={result}>
+                <li key={result._id} className="text-lg font-semibold">
+                  <AdmissionCard  result={result}>
                   </AdmissionCard>
                 </li>
               ))}

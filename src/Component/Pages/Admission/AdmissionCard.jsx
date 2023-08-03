@@ -85,11 +85,11 @@ const AdmissionCard = ({result}) => {
             </div>
           </div>
           
-          
           <div className="mt-5">
             {/* <Link to={`/college/${result._id}`}> */}
             {/* <Link to='/admission-form'> */}
-            <Link to={`/admission-form?collegeId=${_id}`}>
+            {/* <Link to={`/admission-form?collegeId=${_id}`}> */}
+            <Link to={`/get-admission/${result._id}`}>
             <button
               type="submit"
               className="bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-2 font-medium text-base text-white "

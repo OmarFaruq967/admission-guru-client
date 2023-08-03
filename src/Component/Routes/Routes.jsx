@@ -9,6 +9,7 @@ import AdmissionForm from "../Pages/AdmissionForm/AdmissionForm";
 import SignUp from "../Pages/SignUp/SignUp";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import GetAdmission from "../Pages/Admission/GetAdmission";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,16 @@ export const router = createBrowserRouter([
         ),
         loader:({params}) =>
           fetch(`http://localhost:5000/college/${params.id}`),
+      },
+      {
+        path: "/get-admission/:id",
+        element:(
+          <PrivateRoute>
+            <GetAdmission/>
+          </PrivateRoute>
+        ),
+        loader: ({params})=>
+        fetch(`http://localhost:5000/admission/${params.id}`)
       },
     ],
   },
