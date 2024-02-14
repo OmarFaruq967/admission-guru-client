@@ -30,7 +30,7 @@ const Login = () => {
       })
   }
 
-  // Handle google signin
+  // Handle google sign in
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then(result => {

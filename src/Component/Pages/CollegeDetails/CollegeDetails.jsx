@@ -52,9 +52,9 @@ const CollegeDetails = () => {
       <Container>
         <div className=" grid md:grid-cols-2 gap-5">
           <div>
-            <div className="h-[100vh] rounded-md">
+            <div className="h-[85vh] rounded-md">
               <img
-                className="h-[100vh] rounded-md"
+                className="h-[85vh] rounded-md"
                 src={college_image}
                 alt=""
               />
@@ -68,7 +68,7 @@ const CollegeDetails = () => {
               </h2>
             </div>
             <div>
-              <h2 className="text-center">
+              <h2 className="">
                 <span className="text-base font-medium ">
                   Admission process:{" "}
                 </span>
@@ -77,14 +77,14 @@ const CollegeDetails = () => {
             </div>
             <div>
               <h2 className="text-base font-medium mt-3">Events details:</h2>
-              <ul className=" grid md:grid-cols-3 text-base mt-2 gap-3 ">
+              <ul className=" grid md:grid-cols-1 text-base ">
                 {data.events_details ? (
-                  Object.keys(data.events_details).map((events) => (
+                  Object.keys(data.events_details).map((events , index) => (
                     <li
-                      className="my-2 border-2 rounded-md p-3 text-base"
+                      className="my-1 pl-3 text-base"
                       key={events}
                     >
-                      {events}: {data.events_details[events]}
+                     <span className="font-bold">{index + 1}:</span> {events}: {data.events_details[events]}
                     </li>
                   ))
                 ) : (

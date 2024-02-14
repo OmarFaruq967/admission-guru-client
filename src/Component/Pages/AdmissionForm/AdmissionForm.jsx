@@ -4,17 +4,18 @@ import photo1 from "../../../../public/images/graduate-img/01.jpg";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 import useColleges from "../../Hook/useColleges";
+import { useQuery } from "@tanstack/react-query";
 
 const AdmissionForm = ({ collegeId }) => {
   const { user } = useContext(AuthContext);
   const formRef = useRef(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [college, loading] = useColleges();
-  console.log(college);
+ 
   const collegeIdParam = new URLSearchParams(window.location.search).get(
     "collegeId"
   );
-
+  
   // const handleAdmission = (event) => {
   //   event.preventDefault();
   //   const form = event.target;
@@ -86,12 +87,16 @@ const AdmissionForm = ({ collegeId }) => {
     const birthDay = form.birthDay.value;
     const email = user?.email;
 
+    // Check if the user has already applied to the college with the given collegeId
+
     // Image Upload
     const imageUpload = event.target.image.files[0];
     const formData = new FormData();
     formData.append("image", imageUpload);
-  
-    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_KEY}`;
+
+    const url = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_IMGBB_KEY
+    }`;
     fetch(url, {
       method: "POST",
       body: formData,
@@ -99,7 +104,7 @@ const AdmissionForm = ({ collegeId }) => {
       .then((res) => res.json())
       .then((imageData) => {
         const imageUrl = imageData.data.display_url;
-  
+
         const admission = {
           name: name,
           email,
@@ -110,7 +115,7 @@ const AdmissionForm = ({ collegeId }) => {
           image: imageUrl, // Use the imageUrl received from ImgBB API
           collegeId: collegeId,
         };
-  
+        
         fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
           method: "POST",
           headers: {
@@ -137,7 +142,6 @@ const AdmissionForm = ({ collegeId }) => {
         toast.error(err.message);
       });
   };
-  
 
   return (
     <div className="my-10">
@@ -145,7 +149,7 @@ const AdmissionForm = ({ collegeId }) => {
         <div></div>
         <div className="grid md:grid-cols-2 gap-10">
           <div className="h-[90vh]">
-            <img className="h-[90vh] rounded-md" src={photo1} alt="" />
+            <img className="h-[90vh] rounded-md" src="https://source.unsplash.com/640x480/" alt="" />
           </div>
           <div className=" border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5">
             <form ref={formRef} onSubmit={handleAdmission}>
@@ -251,11 +255,14 @@ const AdmissionForm = ({ collegeId }) => {
                   </label>
                 </div>
                 <div>
-                  <label htmlFor="image" className="block text-sm text-gray-500 dark:text-gray-300">
+                  <label
+                    htmlFor="image"
+                    className="block text-sm text-gray-500 dark:text-gray-300"
+                  >
                     Select Image:
                   </label>
                   <input
-                  className="
+                    className="
                   block w-full  py-2 mt-2 text-sm text-gray-600 bg-white  rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300
                     required"
                     type="file"

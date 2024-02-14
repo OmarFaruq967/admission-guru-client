@@ -10,7 +10,7 @@ import {
     signOut,
     updateProfile,
   } from 'firebase/auth'
-  import { app } from '../Firebase/firebase.config'
+import { app } from '../Firebase/firebase.config'
 import { createContext, useEffect, useState } from 'react'
   
   export const AuthContext = createContext(null)

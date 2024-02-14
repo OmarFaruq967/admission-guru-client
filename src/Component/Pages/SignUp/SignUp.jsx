@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { FcGoogle } from 'react-icons/fc'
+import { FcGoogle} from "react-icons/fc";
 import {useContext, useRef } from 'react'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { AuthContext } from '../../Provider/AuthProvider'

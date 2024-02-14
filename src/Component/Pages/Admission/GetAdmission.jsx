@@ -74,7 +74,7 @@ const GetAdmission = () => {
                   <div className="lg:w-1/2 xl:w-3/5 dark:bg-gray-800">
                     <div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
                       <img
-                        src="https://source.unsplash.com/640x480/"
+                        src={college_image}
                         alt=""
                         className="rounded-lg shadow-lg dark:bg-gray-500 aspect-video sm:min-h-96"
                       />
