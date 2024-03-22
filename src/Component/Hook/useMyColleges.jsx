@@ -14,7 +14,7 @@ const useMyColleges = () => {
         setMyColleges(data);
         setLoading(false);
       });
-  }, [user]);
+  }, [user?.email]);
 
   return [myColleges, loading];
 };

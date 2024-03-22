@@ -45,7 +45,7 @@ const CollegeDetails = () => {
 
         <div className=" h-96  flex mx-0 items-center justify-center">
           <div className="z-10 text-white text-center ">
-           <Heading title={college_name} subtitle='See details of'></Heading>
+            <Heading title={college_name} subtitle="See details of"></Heading>
           </div>
         </div>
       </div>
@@ -53,11 +53,7 @@ const CollegeDetails = () => {
         <div className=" grid md:grid-cols-2 gap-5">
           <div>
             <div className="h-[85vh] rounded-md">
-              <img
-                className="h-[85vh] rounded-md"
-                src={college_image}
-                alt=""
-              />
+              <img className="h-[85vh] rounded-md" src={college_image} alt="" />
             </div>
           </div>
           <div className=" border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5">
@@ -79,12 +75,10 @@ const CollegeDetails = () => {
               <h2 className="text-base font-medium mt-3">Events details:</h2>
               <ul className=" grid md:grid-cols-1 text-base ">
                 {data.events_details ? (
-                  Object.keys(data.events_details).map((events , index) => (
-                    <li
-                      className="my-1 pl-3 text-base"
-                      key={events}
-                    >
-                     <span className="font-bold">{index + 1}:</span> {events}: {data.events_details[events]}
+                  Object.keys(data.events_details).map((events, index) => (
+                    <li className="my-1 pl-3 text-base" key={events}>
+                      <span className="font-bold">{index + 1}:</span> {events}:{" "}
+                      {data.events_details[events]}
                     </li>
                   ))
                 ) : (

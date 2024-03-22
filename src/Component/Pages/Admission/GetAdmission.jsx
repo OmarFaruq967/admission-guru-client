@@ -18,6 +18,10 @@ const GetAdmission = () => {
     sports_categories,
     sports,
   } = data;
+
+
+  
+
   return (
     <div>
       <HeroImage

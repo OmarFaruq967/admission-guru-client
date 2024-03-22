@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import AdmissionCard from "./AdmissionCard";
 import useColleges from "../../Hook/useColleges";
 import Container from "../../Shared/Container/Container";
 import LoadingSpinners from "../../Shared/LoadingSpinners/LoadingSpinners";
 import image1 from "../../../../public/Images/Images/image-1.webp";
 import HeroImage from "../../Shared/HeroImage/HeroImage";
+import useMyColleges from "../../Hook/useMyColleges";
+
 
 const Admission = () => {
   const [college, loading] = useColleges();
+  const [selectedColleges] = useMyColleges();
+  // console.log("my college id is :", selectedCollege);
+  // const [isDisable, setIsDisable]= useState(true);
+
   return (
     <div>
       <div>
@@ -20,9 +26,9 @@ const Admission = () => {
           </div>
         ) : (
             <ul className="my-24 grid md:grid-cols-3 gap-5">
-              {college?.map((result) => (
+              {college?.map((result, index ) => (
                 <li key={result._id} className="text-lg font-semibold">
-                  <AdmissionCard  result={result}>
+                  <AdmissionCard  result={result} selectedColleges={selectedColleges} >
                   </AdmissionCard>
                 </li>
               ))}

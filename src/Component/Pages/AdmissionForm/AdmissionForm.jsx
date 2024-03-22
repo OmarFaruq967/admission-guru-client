@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Container from "../../Shared/Container/Container";
 import photo1 from "../../../../public/images/graduate-img/01.jpg";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -11,11 +11,11 @@ const AdmissionForm = ({ collegeId }) => {
   const formRef = useRef(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [college, loading] = useColleges();
- 
+
   const collegeIdParam = new URLSearchParams(window.location.search).get(
     "collegeId"
   );
-  
+ 
   // const handleAdmission = (event) => {
   //   event.preventDefault();
   //   const form = event.target;
@@ -115,7 +115,7 @@ const AdmissionForm = ({ collegeId }) => {
           image: imageUrl, // Use the imageUrl received from ImgBB API
           collegeId: collegeId,
         };
-        
+
         fetch(`http://localhost:5000/admissions?collegeId=${collegeId}`, {
           method: "POST",
           headers: {
@@ -141,7 +141,39 @@ const AdmissionForm = ({ collegeId }) => {
         console.log(err.message);
         toast.error(err.message);
       });
+
+      //admission college treu
+      fetch(`http://localhost:5000/user/${collegeId}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          
+        })
   };
+
+  // useEffect(()=>{
+  //   const url = `http://localhost:5000/college/${collegeId}`
+  //   fetch(url, {
+  //         method: "PUT",
+  //         headers: {
+  //           "content-type": "application/json",
+  //         },
+  //         body: JSON.stringify(),
+  //       })
+  //         .then((res) => res.json())
+  //         .then((data) => {
+  //           console.log(data);
+            
+  //         })
+        
+  // },[collegeId])
+
 
   return (
     <div className="my-10">
@@ -149,7 +181,11 @@ const AdmissionForm = ({ collegeId }) => {
         <div></div>
         <div className="grid md:grid-cols-2 gap-10">
           <div className="h-[90vh]">
-            <img className="h-[90vh] rounded-md" src="https://source.unsplash.com/640x480/" alt="" />
+            <img
+              className="h-[90vh] rounded-md"
+              src="https://source.unsplash.com/640x480/"
+              alt=""
+            />
           </div>
           <div className=" border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5">
             <form ref={formRef} onSubmit={handleAdmission}>

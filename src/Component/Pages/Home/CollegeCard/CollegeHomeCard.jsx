@@ -36,7 +36,7 @@ const CollegeHomeCard = ({ collegeItem }) => {
         </h3>
         <ul className=" text-sm font-medium flex gap-2">
           {Object.keys(admission_dates).map((season) => (
-            <li className="border-r-[2px] pr-1" key={season}>
+            <li className="border-r-[2px] pr-2" key={season}>
               {season}: {admission_dates[season]}
             </li>
           ))}

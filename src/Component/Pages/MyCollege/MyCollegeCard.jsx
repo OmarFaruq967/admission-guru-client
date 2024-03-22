@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 const MyCollegeCard = ({ admission, college }) => {
   const { loading } = useContext(AuthContext);
-  console.log(admission.college)
-
+  
   const {
     college_name,
     admission_dates,
@@ -13,21 +12,22 @@ const MyCollegeCard = ({ admission, college }) => {
     college_rating,
     number_of_research,
   } = admission?.college;
+  ;
 
   return (
     <div>
       <div className=" border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5 ">
         <div>
           <img
-            className="h-[270px] md:h-[350px] w-[100%]"
+            className="h-[200px] md:h-[200px] w-[100%]"
             src={college_image}
             alt=""
           />
         </div>
-        <h2 className="text-lg font-bold mt-5">College Name: {college_name}</h2>
-        <div className="flex mt-2">
+        <h2 className="text-lg font-bold mt-2">{college_name}</h2>
+        <div className="flex ">
           <div>
-            <p className="text-base font-bold pr-5 pt-[6px]">Rating:</p>
+            <p className="text-base font-semibold pr-5 pt-[6px]">Rating:</p>
           </div>
           <div className="flex items-center mt-2.5 mb-2">
             <svg
@@ -85,34 +85,27 @@ const MyCollegeCard = ({ admission, college }) => {
             </span>
           </div>
         </div>
-        <h3 className="text-base font-bold">Admission Dates:</h3>
-        <ul className=" text-base font-medium">
-          {Object.keys(admission_dates).map((season) => (
-            <li key={season}>
-              {season}: {admission_dates[season]}
-            </li>
-          ))}
-        </ul>
-        <div className="flex mt-2">
-          <h3 className="text-base font-bold">Number of Research:</h3>
+        
+        <div className="flex ">
+          <h3 className="text-base font-semibold">Number of Research:</h3>
           <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mt-1">
             {number_of_research}
           </span>
         </div>
+        <h3 className="text-base font-semibold mt-1">subject : {admission?.subject}</h3>
         <div className="mt-5">
           <Link to={`/college/${admission?.college._id}`}>
-          <button
-            type="submit"
-            className="bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-3 text-white "
-          >
-            {loading ? (
-              <FaSpinner className="m-auto animate-spin" size={24} />
-            ) : (
-              "Details"
-            )}
-          </button>
+            <button
+              type="submit"
+              className="bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-2 text-white "
+            >
+              {loading ? (
+                <FaSpinner className="m-auto animate-spin" size={24} />
+              ) : (
+                "View details"
+              )}
+            </button>
           </Link>
-         
         </div>
       </div>
     </div>
