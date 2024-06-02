@@ -7,13 +7,14 @@ import LoadingSpinners from "../../Shared/LoadingSpinners/LoadingSpinners";
 import MyCollegeCard from "./MyCollegeCard";
 import useColleges from "../../Hook/useColleges";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useRemoveAdmission from "../../Hook/useRemoveAdmission";
 
 const MyCollege = () => {
   const [admissions, loading] = useMyColleges();
   const [colleges] = useColleges();
+  const  [handleDelete]= useRemoveAdmission();
   const authContext = useContext(AuthContext);
   const user = authContext?.user;
-  
 
   return (
     <div>
@@ -79,12 +80,12 @@ const MyCollege = () => {
                     const collegeData = colleges.find(
                       (college) => college._id === admission.collegeId
                     );
-                     
                     return (
                       <MyCollegeCard
                         key={admission._id}
                         admission={admission}
                         college={collegeData}
+                        handleDelete={handleDelete}
                       ></MyCollegeCard>
                     );
                   })}

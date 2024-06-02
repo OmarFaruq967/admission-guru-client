@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import useRemoveAdmission from "../../Hook/useRemoveAdmission";
 
-const MyCollegeCard = ({ admission, college }) => {
-  const { loading } = useContext(AuthContext);
-  
+const MyCollegeCard = ({ admission, handleDelete }) => {
+  const { user, loading } = useContext(AuthContext);
+
   const {
     college_name,
     admission_dates,
@@ -12,7 +13,7 @@ const MyCollegeCard = ({ admission, college }) => {
     college_rating,
     number_of_research,
   } = admission?.college;
-  ;
+  
 
   return (
     <div>
@@ -85,27 +86,43 @@ const MyCollegeCard = ({ admission, college }) => {
             </span>
           </div>
         </div>
-        
+
         <div className="flex ">
           <h3 className="text-base font-semibold">Number of Research:</h3>
           <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3 mt-1">
             {number_of_research}
           </span>
         </div>
-        <h3 className="text-base font-semibold mt-1">subject : {admission?.subject}</h3>
-        <div className="mt-5">
-          <Link to={`/college/${admission?.college._id}`}>
+        <h3 className="text-base font-semibold mt-1">
+          subject : {admission?.subject}
+        </h3>
+
+        <div className="grid grid-cols-2 gap-2">
+          {/* view Details button */}
+          <div className="mt-5">
+            <Link to={`/college/${admission?.college._id}`}>
+              <button
+                type="submit"
+                className="bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-2 text-white "
+              >
+                {loading ? (
+                  <FaSpinner className="m-auto animate-spin" size={24} />
+                ) : (
+                  "View details"
+                )}
+              </button>
+            </Link>
+          </div>
+
+          {/* Admission delete button */}
+          <div className="mt-5">
             <button
-              type="submit"
-              className="bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-2 text-white "
+             onClick={() => handleDelete(admission?._id)} // Assuming admission has an _id
+              className={`bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-2 font-medium text-base text-white`}
             >
-              {loading ? (
-                <FaSpinner className="m-auto animate-spin" size={24} />
-              ) : (
-                "View details"
-              )}
+              Remove Admissions
             </button>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

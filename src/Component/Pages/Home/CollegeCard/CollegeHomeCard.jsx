@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { FaSpinner } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import checkMark from "../../../../../public/images/Icons/Check-Mark.png"
 
 const CollegeHomeCard = ({ collegeItem }) => {
   const { loading, setLoading } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const CollegeHomeCard = ({ collegeItem }) => {
 
   return (
     <div>
-      <div className=" border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5 md:h-[631px] relative">
+      <div className=" border-2 border-r-8 border-b-8 rounded-lg border-[#041838] shadow-xl p-5 md:h-auto relative">
         <div>
           <img
             className="h-[270px] md:h-[250px] w-[100%]"
@@ -28,45 +29,46 @@ const CollegeHomeCard = ({ collegeItem }) => {
           />
         </div>
         <h2 className="text-base font-bold mt-5">
-          College Name: {college_name}
+          {college_name}
         </h2>
         <div className="flex mt-2"></div>
         <h3 className="text-sm font-bold">
           Admission Dates: <span></span>
         </h3>
-        <ul className=" text-sm font-medium flex gap-2">
+        <ul className="text-sm font-medium gap-2 list-inside list-decimal"
+        >
           {Object.keys(admission_dates).map((season) => (
-            <li className="border-r-[2px] pr-2" key={season}>
+            <li className=" pr-2" key={season}>
               {season}: {admission_dates[season]}
             </li>
           ))}
         </ul>
-        <div className=" mt-2">
+        <div className=" mt-2 mb-14">
           <h3 className="text-sm font-bold">
             Research History :{" "}
-            <span className=" ml-2 text-sm font-semibold ">
+            <span className="  text-sm font-semibold line-clamp-2 ">
               {research_history}
             </span>
           </h3>
         </div>
-        <div>
+        {/* <div>
           <h3 className="text-sm font-bold">Events:</h3>
           <ul className="text-sm font-medium flex gap-2">
             {events.map((event, index) => (
               <li key={index}>{event}</li>
             ))}
           </ul>
-        </div>
-        <div className="mb-14">
+        </div> */}
+        {/* <div className="mb-14">
           <h3 className="text-sm font-bold">Sports:</h3>
-          <ul className="text-sm font-medium flex gap-2 ">
+          <ul className="text-sm font-medium flex gap-2 list-inside list-decimal ">
             {sports.map((sport, index) => (
-              <li className="border-r-[2px] pr-1" key={index}>
+              <li className="pr-1" key={index}>
                 {sport}
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
         <div className=" mt-5 bottom-3 absolute w-[90%] ">
           <Link to={`/college/${collegeItem._id}`}>
           <button

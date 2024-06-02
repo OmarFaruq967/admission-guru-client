@@ -28,7 +28,7 @@ const AdmissionCard = ({ result, selectedColleges }) => {
     return _id === selectedCollege?.collegeId;
   });
 
-  const isSelectedCollege = !!selectedCollege;
+  // const isSelectedCollege = selectedCollege;
 
   return (
     <div>
@@ -112,9 +112,9 @@ const AdmissionCard = ({ result, selectedColleges }) => {
             {/* <Link to={`/get-admission/${result._id}?collegeId=${selectedCollegeId}`}> */}
 
             <button
-              disabled={isSelectedCollege} // Disable button if collegeId matches result's _id
+              disabled={selectedCollege} // Disable button if collegeId matches result's _id
               className={`bg-[#041838] hover:bg-[#fbbd23] w-full rounded-md py-2 font-medium text-base text-white ${
-                isSelectedCollege ? "opacity-50 cursor-not-allowed" : ""
+                selectedCollege ? "opacity-50 cursor-not-allowed" : ""
               }`}
               type="submit"
             >

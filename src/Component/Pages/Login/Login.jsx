@@ -31,18 +31,58 @@ const Login = () => {
   }
 
   // Handle google sign in
-  const handleGoogleSignIn = () => {
-    signInWithGoogle()
-      .then(result => {
-        console.log(result.user)
-        navigate(from, { replace: true })
-      })
-      .catch(err => {
-        setLoading(false)
-        console.log(err.message)
-        toast.error(err.message)
-      })
-  }
+  // const handleGoogleSignIn = () => {
+  //   signInWithGoogle()
+  //     .then(result => {
+  //       const user = result.user;
+  //       const saveUser = {
+  //         name: user.displayName || "User Name",
+  //         email: user.email,}
+       
+  //       const res = await fetch("http://localhost:5000/user", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(saveUser),
+          
+  //       });
+  //       console.log("res", res);
+  //       // navigate(from, { replace: true })
+  //     })
+  //     .catch(err => {
+  //       setLoading(false)
+  //       console.log(err.message)
+  //       toast.error(err.message)
+  //     })
+  // }
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithGoogle();
+      const user = result.user;
+      const saveUser = {
+        name: user.displayName || "User Name",
+        email: user.email,
+      };
+  
+      fetch("http://localhost:5000/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
+      }).then((
+        res => res.json()
+      )).then((data)=> {toast.success('Log in successful');})
+      navigate(from, { replace: true })
+    } catch (err) {
+      setLoading(false);
+      console.log(err.message);
+      toast.error(err.message);
+    }
+  };
+  
 
   //   handle password reset
 

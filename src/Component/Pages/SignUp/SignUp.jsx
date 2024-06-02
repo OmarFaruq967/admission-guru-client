@@ -71,20 +71,32 @@ const SignUp = () => {
   }
 
   // Handle google signin
-  const handleGoogleSignIn = () => {
-    signInWithGoogle()
-      .then(result => {
-        console.log(result.user)
-        // save user to db
-        saveUser(result.user)
-        navigate(from, { replace: true })
-      })
-      .catch(err => {
-        setLoading(false)
-        console.log(err.message)
-        toast.error(err.message)
-      })
-  }
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithGoogle();
+      const user = result.user;
+      const saveUser = {
+        name: user.displayName || "User Name",
+        email: user.email,
+      };
+  
+      fetch("http://localhost:5000/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(saveUser),
+      }).then((
+        res => res.json()
+      )).then((data)=> {toast.success('Log in successful');})
+      navigate(from, { replace: true })
+    } catch (err) {
+      setLoading(false);
+      console.log(err.message);
+      toast.error(err.message);
+    }
+  };
+  
   return (
     <div className='flex justify-center items-center min-h-screen my-20'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
